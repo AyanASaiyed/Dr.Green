@@ -1,17 +1,64 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 const App = () => {
+
+  const InfoButton = () => {
+    const [showPopup, setShowPopup] = useState(false);
+
+    const handleClick = () => {
+      setShowPopup(true);
+    };
+
+    const handleOutsideClick = (event) => {
+      if (showPopup) {
+        setShowPopup(false);
+      }
+    };
+
+    useEffect(() => {
+      document.addEventListener('click', handleOutsideClick);
+
+      return () => {
+        document.removeEventListener('click', handleOutsideClick);
+      };
+    }, [showPopup]);
+
+    return (
+      <div className="flex flex-col items-center">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            handleClick();
+          }}
+          className="bg-white text-black w-12 h-12 rounded-full absolute top-4 right-4 shadow-md hover:shadow-lg hover:bg-gray-200"
+        >
+          i
+        </button>
+
+        {showPopup && (
+          <div
+            className="absolute top-16 right-4 bg-gray-100 p-4 w-72 h- auto rounded shadow-lg"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-gray-700 text-sm"> Upload an image of your plant to identify any potential diseases and receive recommended solutions for treatment!! </p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   return (
     <div className="flex flex-col items-center">
       <section className="mt-10">
         <h1 className="font-extrabold text-white text-3xl">Dr.Green🌱</h1>
       </section>
 
-      <section className="">
-
+      <section>
+        <InfoButton />
       </section>
     </div>
   );
 };
 
 export default App;
+
