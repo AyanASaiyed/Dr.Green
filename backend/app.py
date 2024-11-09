@@ -1,17 +1,18 @@
-from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask import Flask, request, jsonify
+from utils import symptom_matcher
 
 app = Flask(__name__)
-CORS(app)  # This allows CORS for all routes
 
-@app.route('/')
-def index():
-    return jsonify({"message": "Welcome to Dr Green's API"})
-
-@app.route('/data', methods=['GET'])
-def get_data():
-    sample_data = {"plant": "Aloe Vera", "status": "healthy"}
-    return jsonify(sample_data)
+@app.route('/diagnose', methods=['POST'])
+def diagnose():
+    data = request.json
+    symptoms = data.get("symptoms", "")
+    
+    if not symptoms:
+        return jsonify({"error": "No symptoms provided"}), 400
+    
+    disease = symptom_matcher(symptoms)
+    return jsonify({"disease": disease})
 
 if __name__ == '__main__':
     app.run(debug=True)
