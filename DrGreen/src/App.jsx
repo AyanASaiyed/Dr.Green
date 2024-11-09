@@ -30,17 +30,16 @@ const App = () => {
             e.stopPropagation();
             handleClick();
           }}
-          className="bg-white text-black w-12 h-12 rounded-full absolute top-4 right-4 shadow-md hover:shadow-lg hover:bg-gray-200"
-        >
+          className="bg-white text-black w-12 h-12 rounded-full absolute top-4 right-4 shadow-md hover:shadow-lg hover:bg-gray-200">
           i
         </button>
 
         {showPopup && (
           <div
-            className="absolute top-16 right-4 bg-gray-100 p-4 w-72 h- auto rounded shadow-lg"
+            className="absolute top-16 right-4 bg-opacity-80 bg-gray-600 p-4 w-72 h- auto rounded shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
-            <p className="text-gray-700 text-sm"> Upload an image of your plant to identify any potential diseases and receive recommended solutions for treatment!! </p>
+            <p className="text-gray-200 text-sm "> Upload an image of your plant to identify any potential diseases and receive recommended solutions for treatment!! </p>
           </div>
         )}
       </div>
