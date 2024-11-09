@@ -8,6 +8,6 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
 
   {/* CHANGE THIS BACK TO APP AFTER */}
-    <Analysis />
+    <App/>
   </StrictMode>,
 )
