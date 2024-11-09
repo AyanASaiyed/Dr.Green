@@ -1,1 +1,1 @@
-from utils.symptoms import match_symptoms
+from utils.symptom_matcher import match_symptoms
