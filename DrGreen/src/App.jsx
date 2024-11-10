@@ -51,7 +51,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <section className="mt-10">
-        <h1 className="font-extrabold text-black text-5xl">Dr.Green🌱</h1>
+        <h1 className="font-extrabold text-white text-5xl">Dr.Green🌱</h1>
       </section>
 
       <section className="mt-10">
