@@ -28,9 +28,12 @@ const SignUp = ({ user }) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-      <img src="/cartoon plant doctor.png" className="h-[30vh] shadow-2xl shadow-black mb-10"></img>
+      <img
+        src="/cartoon plant doctor.png"
+        className="h-[30vh] shadow-2xl shadow-black mb-10"
+      ></img>
       <h1 className="text-4xl font-extrabold text-center  text-black mb-4">
-        Keeping Plants Green!
+        Keeping Plants <span className="text-teal-600 font-serif">Green</span>!
       </h1>
       <div className="w-full p-4 mt-0 rounded-lg shadow-md bg-teal-700 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50">
         <h1 className="text-3xl font-extrabold text-center text-white">
@@ -40,7 +43,9 @@ const SignUp = ({ user }) => {
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text text-white font-bold">Email</span>
+              <span className="text-base label-text text-white font-bold">
+                Email
+              </span>
             </label>
             <input
               type="text"
@@ -52,7 +57,9 @@ const SignUp = ({ user }) => {
           </div>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text text-white font-bold">Password</span>
+              <span className="text-base label-text text-white font-bold">
+                Password
+              </span>
             </label>
             <input
               type="password"
