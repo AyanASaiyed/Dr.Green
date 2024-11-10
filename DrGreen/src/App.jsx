@@ -53,7 +53,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <section className="mt-10">
-        <h1 className="font-extrabold text-white text-3xl">Dr.Green🌱</h1>
+        <h1 className="font-extrabold text-green-700 text-3xl">Dr.Green🌱</h1>
       </section>
 
       <section>
