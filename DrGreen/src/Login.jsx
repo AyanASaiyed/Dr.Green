@@ -33,7 +33,7 @@ const Login = ({ user }) => {
       <h1 className="text-4xl font-extrabold text-center  text-black mb-4">
         Keeping Plants Green!
       </h1>
-      <div className="w-full p-4 mt-0 rounded-lg shadow-md bg-gray-800 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50">
+      <div className="w-full p-4 mt-0 rounded-lg shadow-md bg-teal-700 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50">
         <h1 className="text-3xl font-extrabold text-center text-white">
           Login
         </h1>
@@ -41,7 +41,7 @@ const Login = ({ user }) => {
         <form onSubmit={handleSubmit}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text text-white">Email</span>
+              <span className="text-base label-text text-white font-bold">Email</span>
             </label>
             <input
               type="text"
@@ -53,7 +53,7 @@ const Login = ({ user }) => {
           </div>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text text-white">Password</span>
+              <span className="text-base label-text text-white font-bold">Password</span>
             </label>
             <input
               type="password"
@@ -66,13 +66,13 @@ const Login = ({ user }) => {
 
           <Link
             to="/signup"
-            className="text-sm hover:underline hover:text-green-400 mt-2 inline-block"
+            className="text-sm hover:underline mt-2 inline-block"
           >
             Create an Account
           </Link>
           <div className="flex items-center justify-center">
             <button
-              className="mt-2 hover:bg-green-800 rounded-xl bg-white px-6 py-3 hover:text-white"
+              className="mt-2 hover:bg-teal-400 rounded-xl bg-white px-6 py-3 hover:text-white"
               onClick={handleSubmit}
             >
               Login
