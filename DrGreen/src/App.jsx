@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 const App = () => {
+  const [Image, setImage] = useState("");
+
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
+    setImage(base64)
+    console.log(base64);
   };
 
   const convertBase64 = (file) => {
@@ -29,7 +33,6 @@ const App = () => {
 
       <section className="mt-10">
         <input
-          id="fileInput"
           type="file"
           accept="image/png, image/jpeg, image/jpg"
           onChange={(e) => {
@@ -38,9 +41,10 @@ const App = () => {
           className=""
         />
       </section>
+      <img src={Image} className="h-[50vh] rounded-xl mt-10"/>
 
-      <section className="mt-10 bg-yellow-100">
-        <p>Click + to upload the image</p>
+      <section className="mt-10">
+        <p className="text-white font-extralight mt-20">Click + to upload the image</p>
       </section>
     </div>
   );
