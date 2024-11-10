@@ -1,5 +1,121 @@
 [
+<<<<<<< Updated upstream
     {"symptoms": ["yellow leaves", "wilting"], "disease": "Root Rot"},
     {"symptoms": ["white spots", "powdery growth"], "disease": "Powdery Mildew"}
 ]
   
+=======
+  { "symptoms": ["yellow leaves", "wilting"], "disease": "Root Rot" },
+  {
+    "symptoms": ["white spots", "powdery growth"],
+    "disease": "Powdery Mildew"
+  },
+  { "symptoms": ["brown spots", "leaf curling"], "disease": "Leaf Spot" },
+  {
+    "symptoms": ["holes in leaves", "chewed edges"],
+    "disease": "Pest Infestation"
+  },
+  {
+    "symptoms": ["yellowing veins", "stunted growth"],
+    "disease": "Nutrient Deficiency"
+  },
+  {
+    "symptoms": ["black spots", "yellow edges"],
+    "disease": "Black Spot Disease"
+  },
+  { "symptoms": ["wilting", "dry leaves"], "disease": "Drought Stress" },
+  {
+    "symptoms": ["sticky residue", "black mold"],
+    "disease": "Aphid Infestation"
+  },
+  { "symptoms": ["discolored stems", "soft roots"], "disease": "Stem Rot" },
+  {
+    "symptoms": ["white powdery spots", "yellowing leaves"],
+    "disease": "Downy Mildew"
+  },
+  { "symptoms": ["leaf drop", "small leaves"], "disease": "Overwatering" },
+  {
+    "symptoms": ["brown tips", "yellowing leaves"],
+    "disease": "Salt Build-Up"
+  },
+  {
+    "symptoms": ["black streaks", "rotting roots"],
+    "disease": "Bacterial Blight"
+  },
+  { "symptoms": ["scorched edges", "crispy leaves"], "disease": "Sunburn" },
+  {
+    "symptoms": ["mottled leaves", "deformed growth"],
+    "disease": "Viral Infection"
+  },
+  {
+    "symptoms": ["white webs", "fine webbing"],
+    "disease": "Spider Mite Infestation"
+  },
+  {
+    "symptoms": ["curling leaves", "sticky droplets"],
+    "disease": "Scale Infestation"
+  },
+  { "symptoms": ["purple spots", "leaf drop"], "disease": "Fungal Leaf Spot" },
+  { "symptoms": ["yellowing leaves", "leaf blisters"], "disease": "Edema" },
+  {
+    "symptoms": ["white fluff", "root disintegration"],
+    "disease": "Root Aphids"
+  },
+  {
+    "symptoms": ["wilted new growth", "blackened stems"],
+    "disease": "Fusarium Wilt"
+  },
+  { "symptoms": ["rust-colored spots", "leaf drop"], "disease": "Rust Fungus" },
+  {
+    "symptoms": ["yellowing lower leaves", "root browning"],
+    "disease": "Phytophthora Root Rot"
+  },
+  { "symptoms": ["leaf scorch", "wilting"], "disease": "Anthracnose" },
+  {
+    "symptoms": ["water-soaked lesions", "stem browning"],
+    "disease": "Bacterial Wilt"
+  },
+  {
+    "symptoms": ["small bumps on leaves", "yellow patches"],
+    "disease": "Leaf Gall"
+  },
+  {
+    "symptoms": ["gray mold on leaves", "brownish lesions"],
+    "disease": "Botrytis Blight"
+  },
+  {
+    "symptoms": ["yellowing edges", "thin, spindly growth"],
+    "disease": "Iron Deficiency"
+  },
+  {
+    "symptoms": ["yellow spots", "web-like patterns on leaves"],
+    "disease": "Thrip Infestation"
+  },
+  { "symptoms": ["brown lesions", "leaf curling"], "disease": "Blight" },
+  {
+    "symptoms": ["soft, mushy stems", "rotting base"],
+    "disease": "Southern Blight"
+  },
+  {
+    "symptoms": ["leaf distortion", "yellowing veins"],
+    "disease": "Herbicide Damage"
+  },
+  {
+    "symptoms": ["stunted growth", "purple underside of leaves"],
+    "disease": "Phosphorus Deficiency"
+  },
+  {
+    "symptoms": ["pale leaves", "leaf drop"],
+    "disease": "Nitrogen Deficiency"
+  },
+  {
+    "symptoms": ["black tips", "yellow edges"],
+    "disease": "Ammonium Toxicity"
+  },
+  {
+    "symptoms": ["yellow mottling", "wrinkled leaves"],
+    "disease": "Tobacco Mosaic Virus"
+  },
+  { "symptoms": ["black spots on stems", "wilting"], "disease": "Stem Canker" }
+]
+>>>>>>> Stashed changes
