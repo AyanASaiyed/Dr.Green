@@ -17,23 +17,36 @@ def identify():
             raise ValueError("No image provided")
 
         # Pass the base64 image to the identify_plant function
-        image_data, image = identify_plant(base64_image)
+        #image_data, image = identify_plant(base64_image)
 
         # Send the image data to the Plant ID API for identification
         response = requests.post(
-            "https://plant.id/api/v3",
-            headers={"Authorization": f"Bearer {Config.PLANT_ID_API_KEY}"},
-            files={"images": ("image.png", image_data, "image/png")},  # Corrected file format
-            json={"organs": ["leaf", "flower"]}
+            "https://plant.id/api/v3/health_assessment",
+            headers={"Api-Key": Config.PLANT_ID_API_KEY, 
+                     "Content-Type": "application/json"} , # Use Api-Key header instead of Authorization
+            #files={"images": ("image.png", image_data, "image/png")},  # Corrected file format
+            json={  "health" : "only",
+                    "images": [base64_image],  # Replace with actual base64 image data
+                    "latitude": 49.207,
+                    "longitude": 16.608,
+                    "similar_images": True
+}
         )
 
-        # Check the response status and content
-        if response.status_code != 200:
+        # Check the response status
+        if response.status_code == 201:
+            response_data = response.json()
+            print(response_data['result']['disease']['suggestions'][0]['name'])
+            #task_id = response_data.get("id")
+
+
+        elif response.status_code != 200:
+            # Handle errors
             print(f"Error from Plant ID API: {response.status_code}")
             print(response.text)
             return jsonify({"error": f"Plant ID API error: {response.status_code}"}), 500
 
-        # Return the response from the Plant ID API
+        # Return the response from the Plant ID API if no async flag is set
         if response.headers.get("Content-Type") == "application/json":
             return jsonify(response.json())
         else:
