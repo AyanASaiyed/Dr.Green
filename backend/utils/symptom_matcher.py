@@ -13,29 +13,20 @@ def match_symptoms(symptoms_text):
 
     # Iterate through the disease data
     for entry in disease_data:
-        # Create a flag to check if the disease matches
-        matched = False
-
-        # For each disease entry, check if any of its symptoms are in the user's input
-        for symptom in entry["symptoms"]:
-            # Check if the symptom is found in the user's symptoms text
-            if symptom.lower() in symptoms_text:
-                matched = True
-            else:
-                matched = False
-                break  # Stop checking if one symptom is not found
-
-        # If all symptoms are matched for this disease, add it to the matched diseases list
-        if matched:
-            matched_diseases.append({"disease": entry["disease"], "matched_symptoms": entry["symptoms"]})
+        # Check if any symptom in the entry matches the user's input
+        matched_symptoms = [symptom for symptom in entry["symptoms"] if symptom.lower() in symptoms_text]
+        
+        # If there are any matched symptoms, add the disease to the matched_diseases list
+        if matched_symptoms:
+            matched_diseases.append({"disease": entry["disease"], "matched_symptoms": matched_symptoms})
 
     # If any diseases matched, return them, otherwise return a default message
     if matched_diseases:
         return matched_diseases
     else:
-        return "No matching disease found."
+        return {"message": "No matching disease found."}
 
 # Example usage
-symptoms_input = "Hey my plant looks sick and it has red spots"
+symptoms_input = "Hey my plant looks sick and it has yellow leaves"
 result = match_symptoms(symptoms_input)
 print(result)
