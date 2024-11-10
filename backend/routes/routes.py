@@ -1,29 +1,47 @@
-# routes.py
+import requests
+from PIL import Image
 from flask import Blueprint, request, jsonify
-from werkzeug.utils import secure_filename
-import os
+from config import Config
 from utils import identify_plant
 
 app_routes = Blueprint('app_routes', __name__)
-UPLOAD_FOLDER = "uploads/"
 
-@app_routes.route("/identify", methods=["POST"])
+@app_routes.route('/identify', methods=['POST'])
 def identify():
-    if "file" not in request.files:
-        return jsonify({"error": "No file part"}), 400
+    try:
+        # Get the base64-encoded image from the request
+        data = request.get_json()
+        base64_image = data.get('image')
 
-    file = request.files["file"]
-    if file.filename == "":
-        return jsonify({"error": "No selected file"}), 400
+        if not base64_image:
+            raise ValueError("No image provided")
 
-    filename = secure_filename(file.filename)
-    file_path = os.path.join(UPLOAD_FOLDER, filename)
-    file.save(file_path)
+        # Pass the base64 image to the identify_plant function
+        image_data, image = identify_plant(base64_image)
 
-    result = identify_plant(file_path)
+        # Send the image data to the Plant ID API for identification
+        response = requests.post(
+            "https://plant.id/api/v3",
+            headers={"Authorization": f"Bearer {Config.PLANT_ID_API_KEY}"},
+            files={"images": ("image.png", image_data, "image/png")},  # Corrected file format
+            json={"organs": ["leaf", "flower"]}
+        )
 
-    return jsonify(result)
+        # Check the response status and content
+        if response.status_code != 200:
+            print(f"Error from Plant ID API: {response.status_code}")
+            print(response.text)
+            return jsonify({"error": f"Plant ID API error: {response.status_code}"}), 500
 
-@app_routes.route("/")
-def home():
-    return "Hello, Flask is running!"
+        # Return the response from the Plant ID API
+        if response.headers.get("Content-Type") == "application/json":
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Non-JSON response received from Plant ID API"}), 500
+
+    except ValueError as e:
+        print(f"ValueError: {str(e)}")
+        return jsonify({"error": str(e)}), 400
+    except Exception as e:
+        print(f"Unexpected error: {str(e)}")
+        return jsonify({"error": f"An unexpected error occurred: {str(e)}"}), 500
