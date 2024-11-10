@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [Image, setImage] = useState("");
+  const [Image, setImage] = useState(""); // State to hold the base64 image
+  const [response, setResponse] = useState(""); // State to store the response from the backend
 
   const uploadImage = async (e) => {
     const file = e.target.files[0];
     const base64 = await convertBase64(file);
-    setImage(base64);
-    console.log(base64);
+    setImage(base64); // Save the base64 image to state
+    console.log(base64); // Log the base64 string (for debugging)
+
+    // Send the base64 image to the backend
+    await sendToBackend(base64);
   };
 
   const convertBase64 = (file) => {
@@ -23,6 +27,25 @@ const App = () => {
         reject(error);
       };
     });
+  };
+
+  // Function to send base64 image to the Flask backend
+  const sendToBackend = async (base64Image) => {
+    try {
+      const response = await fetch("http://localhost:5000/identify", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ image: base64Image }), // Send base64 image as JSON
+      });
+
+      const data = await response.json(); // Get the response from the backend
+      setResponse(data); // Save the response to state (for display)
+      console.log(data); // Log the response (for debugging)
+    } catch (error) {
+      console.error("Error sending image to backend:", error);
+    }
   };
 
   return (
@@ -42,13 +65,26 @@ const App = () => {
           bg-gradient-to-br from-gray-600 to-gray-700 text-white/80 rounded-full cursor-pointer shadow-xl shadow-gray-700/60"
         />
       </section>
-      <img src={Image} className="h-[50vh] rounded-xl mt-10" />
+
+      {Image && (
+        <section className="mt-10">
+          <img src={Image} alt="Uploaded" className="h-[50vh] rounded-xl mt-10" />
+        </section>
+      )}
 
       <section className="mt-10">
         <p className="text-white font-extralight mt-20">
           Click + to upload the image
         </p>
       </section>
+
+      {/* Displaying the backend response */}
+      {response && (
+        <section className="mt-10">
+          <h2 className="text-white">Response from Backend:</h2>
+          <pre className="text-white">{JSON.stringify(response, null, 2)}</pre>
+        </section>
+      )}
     </div>
   );
 };
