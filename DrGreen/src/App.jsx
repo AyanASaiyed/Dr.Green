@@ -68,7 +68,11 @@ const App = () => {
 
       {Image && (
         <section className="mt-10">
-          <img src={Image} alt="Uploaded" className="h-[50vh] rounded-xl mt-10" />
+          <img
+            src={Image}
+            alt="Uploaded"
+            className="h-[50vh] rounded-xl mt-10"
+          />
         </section>
       )}
 
@@ -77,14 +81,17 @@ const App = () => {
           Click + to upload the image
         </p>
       </section>
-
-      {/* Displaying the backend response */}
-      {response && (
-        <section className="mt-10">
-          <h2 className="text-white">Response from Backend:</h2>
-          <pre className="text-white">{JSON.stringify(response, null, 2)}</pre>
-        </section>
-      )}
+      <section className="bg-transparent w-[90vh] flex items-center justify-start flex-col">
+        {response && (
+          <section className="mt-10 bg-transparent w-full">
+            <h1 className="text-black">
+              {JSON.stringify(
+                response["result"]["disease"]["suggestions"][0]["name"]
+              )}
+            </h1>
+          </section>
+        )}
+      </section>
     </div>
   );
 };
