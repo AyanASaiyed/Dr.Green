@@ -23,3 +23,7 @@ def identify():
     result = identify_plant(file_path)
 
     return jsonify(result)
+
+@app_routes.route("/")
+def home():
+    return "Hello, Flask is running!"
