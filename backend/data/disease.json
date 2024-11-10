@@ -1,10 +1,4 @@
 [
-<<<<<<< Updated upstream
-    {"symptoms": ["yellow leaves", "wilting"], "disease": "Root Rot"},
-    {"symptoms": ["white spots", "powdery growth"], "disease": "Powdery Mildew"}
-]
-  
-=======
   { "symptoms": ["yellow leaves", "wilting"], "disease": "Root Rot" },
   {
     "symptoms": ["white spots", "powdery growth"],
@@ -118,4 +112,3 @@
   },
   { "symptoms": ["black spots on stems", "wilting"], "disease": "Stem Canker" }
 ]
->>>>>>> Stashed changes
