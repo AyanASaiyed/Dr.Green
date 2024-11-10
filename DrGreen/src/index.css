@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 body {
-  height: full;
+  height: 100vh;
   margin: 0;
-  background: linear-gradient(rgb(1, 75, 1), black);
+  background: white;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

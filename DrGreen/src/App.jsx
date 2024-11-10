@@ -51,7 +51,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <section className="mt-10">
-        <h1 className="font-extrabold text-white text-5xl">Dr.Green🌱</h1>
+        <h1 className="font-extrabold text-green-800 text-5xl">Dr.Green🌱</h1>
       </section>
 
       <section className="mt-10">
@@ -71,15 +71,15 @@ const App = () => {
           <img
             src={Image}
             alt="Uploaded"
-            className="h-[50vh] rounded-xl mt-10"
+            className="h-[50vh] rounded-xl mt-10 shadow-2xl shadow-black"
           />
         </section>
       )}
 
-      <section className="bg-transparent border-white border-4 mt-10 flex items-center justify-start flex-col w-[90vw] rounded-xl mb-5 px-6">
+      <section className="shadow-2xl shadow-black bg-transparent border-black border-4 mt-10 flex items-center justify-start flex-col w-[90vw] rounded-xl mb-5 px-6">
         {response && (
           <div className="mt-5 w-full text-center">
-            <h1 className="text-white font-bold text-3xl text-center bg-transparent pb-2">
+            <h1 className="text-black font-bold text-3xl text-center bg-transparent pb-2">
               {Array.isArray(response.result.disease.suggestions[0].name)
                 ? response.result.disease.suggestions[0].name.join(", ")
                 : typeof response.result.disease.suggestions[0].name ===
@@ -89,7 +89,7 @@ const App = () => {
                   ).join(", ")
                 : response.result.disease.suggestions[0].name}
             </h1>
-            <p className="text-white text-l text-center break-words bg-transparent mb-4 font-extralight">
+            <p className="text-black text-l text-center break-words bg-transparent mb-4 font-light">
               {Array.isArray(
                 response.result.disease.suggestions[0].details.treatment
               )
