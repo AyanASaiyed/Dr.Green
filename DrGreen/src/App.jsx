@@ -51,7 +51,7 @@ const App = () => {
   return (
     <div className="flex flex-col items-center">
       <section className="mt-10">
-        <h1 className="font-extrabold text-white text-5xl">Dr.Green🌱</h1>
+        <h1 className="font-extrabold text-black text-5xl">Dr.Green🌱</h1>
       </section>
 
       <section className="mt-10">
@@ -76,20 +76,34 @@ const App = () => {
         </section>
       )}
 
-      <section className="mt-10">
-        <p className="text-white font-extralight mt-20">
-          Click + to upload the image
-        </p>
-      </section>
-      <section className="bg-transparent w-[90vh] flex items-center justify-start flex-col">
+      <section className="bg-transparent border-white border-4 mt-10 flex items-center justify-start flex-col w-[90vw] rounded-xl mb-5 px-6">
         {response && (
-          <section className="mt-10 bg-transparent w-full">
-            <h1 className="text-black">
-              {JSON.stringify(
-                response["result"]["disease"]["suggestions"][0]["name"]
-              )}
+          <div className="mt-5 w-full text-center">
+            <h1 className="text-white font-bold text-3xl text-center bg-transparent pb-2">
+              {Array.isArray(response.result.disease.suggestions[0].name)
+                ? response.result.disease.suggestions[0].name.join(", ")
+                : typeof response.result.disease.suggestions[0].name ===
+                  "object"
+                ? Object.values(
+                    response.result.disease.suggestions[0].name
+                  ).join(", ")
+                : response.result.disease.suggestions[0].name}
             </h1>
-          </section>
+            <p className="text-white text-l text-center break-words bg-transparent mb-4 font-extralight">
+              {Array.isArray(
+                response.result.disease.suggestions[0].details.treatment
+              )
+                ? response.result.disease.suggestions[0].details.treatment.join(
+                    " "
+                  )
+                : typeof response.result.disease.suggestions[0].details
+                    .treatment === "object"
+                ? Object.values(
+                    response.result.disease.suggestions[0].details.treatment
+                  ).join(" ")
+                : response.result.disease.suggestions[0].details.treatment}
+            </p>
+          </div>
         )}
       </section>
     </div>

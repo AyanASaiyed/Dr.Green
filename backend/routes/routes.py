@@ -37,13 +37,14 @@ def identify():
         # Check the response status
         if response.status_code == 201:
             response_data = response.json()
-            for suggestion in response_data["result"]["disease"]["suggestions"]:
-                print(f"Disease: {suggestion['name']}")
-                print(f"Cause: {suggestion['details']['cause']}")
-                print("Treatment:")
-                for treatment_type, treatments in suggestion["details"]["treatment"].items():
-                    print(f"  {treatment_type.capitalize()} Treatments:")
-                    for treatment in treatments:
+            suggestion = response_data["result"]["disease"]["suggestions"][0]
+            # for suggestion in response_data["result"]["disease"]["suggestions"]:
+            print(f"Disease: {suggestion['name']}")
+            print(f"Cause: {suggestion['details']['cause']}")
+            print("Treatment:")
+            for treatment_type, treatments in suggestion["details"]["treatment"].items():
+                print(f"  {treatment_type.capitalize()} Treatments:")
+                for treatment in treatments:
                         print(f"    - {treatment}")
                 print("\n")
             #task_id = response_data.get("id")
