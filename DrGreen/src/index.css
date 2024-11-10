@@ -5,7 +5,7 @@
 body {
   height: 100vh;
   margin: 0;
-  background: url('https://images.stockcake.com/public/4/7/5/47598533-aa45-45b1-a7a0-c6e66060042e_large/dewy-morning-leaves-stockcake.jpg'); /*linear-gradient(rgb(1, 75, 1), black);*/
+  background: linear-gradient(rgb(1, 75, 1), black);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
