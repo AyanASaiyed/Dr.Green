@@ -21,7 +21,7 @@ def identify():
 
         # Send the image data to the Plant ID API for identification
         response = requests.post(
-            "https://plant.id/api/v3/health_assessment",
+            "https://plant.id/api/v3/health_assessment?details=local_name,description,url,treatment,classification,common_names,cause",
             headers={"Api-Key": Config.PLANT_ID_API_KEY, 
                      "Content-Type": "application/json"} , # Use Api-Key header instead of Authorization
             #files={"images": ("image.png", image_data, "image/png")},  # Corrected file format
@@ -29,14 +29,23 @@ def identify():
                     "images": [base64_image],  # Replace with actual base64 image data
                     "latitude": 49.207,
                     "longitude": 16.608,
-                    "similar_images": True
-}
+                    "similar_images": True,
+            }
+
         )
 
         # Check the response status
         if response.status_code == 201:
             response_data = response.json()
-            print(response_data['result']['disease']['suggestions'][0]['name'])
+            for suggestion in response_data["result"]["disease"]["suggestions"]:
+                print(f"Disease: {suggestion['name']}")
+                print(f"Cause: {suggestion['details']['cause']}")
+                print("Treatment:")
+                for treatment_type, treatments in suggestion["details"]["treatment"].items():
+                    print(f"  {treatment_type.capitalize()} Treatments:")
+                    for treatment in treatments:
+                        print(f"    - {treatment}")
+                print("\n")
             #task_id = response_data.get("id")
 
 
