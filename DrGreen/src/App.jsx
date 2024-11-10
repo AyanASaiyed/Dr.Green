@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 const App = () => {
 
+  const uploadFiles = () =>{
+    document.getElementById('selectFile').click()
+  }
+
   const InfoButton = () => {
     const [showPopup, setShowPopup] = useState(false);
 
@@ -55,8 +59,21 @@ const App = () => {
       <section>
         <InfoButton />
       </section>
+
+      <section className="mt-10"> 
+        <button className="bg-opacity-70 bg-gray-600 w-[65vw] h-[65vh] text-[10rem]" onClick={uploadFiles} >
+          +
+        </button>
+        <input id="selectFile" type = "file" style={{display: "none"}} accept="image/png, image/jpeg, image/jpg" />
+      </section>
+
+      <section className="mt-10 bg-yellow-100">
+        <p>Click + to upload the image</p>
+      </section>
     </div>
   );
+
+
 };
 
 export default App;
